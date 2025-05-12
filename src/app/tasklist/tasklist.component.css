@@ -1,0 +1,67 @@
+
+
+h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+div {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+p{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+  
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    
+}
+  
+.task-item.completed {
+    text-decoration: line-through;
+    color: rgb(143, 16, 16);
+}
+  
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+  
+input[type="text"], button {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button.edit, button.delete {
+  margin-left: 5px;
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+button.edit:hover, button.delete:hover {
+  background-color: #da190b;
+}

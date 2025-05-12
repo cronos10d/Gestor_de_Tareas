@@ -1,0 +1,4 @@
+<div class="task-item" [ngClass]="{'completed': completed}">
+    <input type="checkbox" [checked]="completed" (change)="onTaskCompleted()">
+    <span>{{ task }}</span>
+</div>

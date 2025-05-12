@@ -1,0 +1,16 @@
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .task-item.completed {
+    text-decoration: line-through;
+    color: rgb(178, 26, 26);
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
