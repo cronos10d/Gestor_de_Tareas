@@ -4,9 +4,24 @@
 <div>
   <h2>Lista de Tareas de Oficina</h2>
 
-  
-  <input type="text" [(ngModel)]="newTask" placeholder="Escribe una tarea" />
-  <button (click)="addNewTask(newTask)">Agregar tarea</button>
+
+  <!--Formulario-->  
+  <form [formGroup]="taskForm" (ngSubmit)="addNewTask()"> 
+    <input 
+      type="text" 
+      formControlName="newTask" 
+      placeholder="Escribe una tarea" 
+  />
+
+  <button type="submit" [disabled]="taskForm.invalid">Agregar tarea</button>  
+
+  <!--Formulario-->  
+  <div class="validar" *ngIf="taskForm.get('newTask')?.invalid && taskForm.get('newTask')?.touched">
+      <small *ngIf="taskForm.get('newTask')?.hasError('required')">Llena el campo con una tarea</small>
+      <small *ngIf="taskForm.get('newTask')?.hasError('minlength')">La tarea debe tener al menos 5 caracteres.</small>
+  </div>
+  </form>
+
 
   
   <div *ngFor="let task of tasks; let i = index">

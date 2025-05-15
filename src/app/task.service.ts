@@ -21,7 +21,7 @@ export class TaskService {
     return this.tasksSubject.asObservable();
   }
 
-  // Agregar una tarea
+  // Agregar una tarea 
   añadirTarea(task: string) {
     const currentTasks = this.tasksSubject.value;
     const newTask = { task, completed: false };

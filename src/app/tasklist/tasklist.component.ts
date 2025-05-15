@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from '../task-item-component/task-item-component.component'; 
 import { TaskService } from '../task.service';  
-import { FormsModule } from '@angular/forms'; 
+import { FormGroup, FormsModule, FormControl, Validators } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './tasklist.component.html',
   styleUrls: ['./tasklist.component.css'],
   standalone: true,
-  imports: [TaskItemComponent, CommonModule, FormsModule],
+  imports: [TaskItemComponent, CommonModule, FormsModule, ReactiveFormsModule],
 
 })
 export class TaskListComponent {
@@ -23,12 +24,19 @@ export class TaskListComponent {
   newTask: string = ''; 
   editIndex: number | null = null;  
   taskToEdit: string = '';  
+  taskForm: FormGroup;
 
-  constructor(private taskService: TaskService) {}
+
+  //Validators que hay: minlenght y required
+  constructor(private taskService: TaskService) {
+    this.taskForm = new FormGroup({
+      newTask: new FormControl('', [Validators.required, Validators.minLength(5)])  
+  });
+  }
 
   ngOnInit() {
-    
-    this.taskService.obtenerTarea().subscribe(tasks => {
+
+  this.taskService.obtenerTarea().subscribe(tasks => {
       this.tasks = tasks;
     });
   }
@@ -42,11 +50,13 @@ export class TaskListComponent {
     this.taskService.eliminarTarea(index); 
   }
 
-  addNewTask(task: string) {
-    if (task) {
+  addNewTask() {
+    if(this.taskForm.valid){
+      const task = this.taskForm.get('newTask')?.value; 
       this.taskService.añadirTarea(task);  
-      this.newTask = '';  
+      this.taskForm.reset();  
     }
+    
   }
 
   // Método para iniciar la edición de una tarea
