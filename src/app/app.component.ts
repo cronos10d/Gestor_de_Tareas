@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskListComponent } from './tasklist/tasklist.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -7,7 +8,7 @@ import { TaskListComponent } from './tasklist/tasklist.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true, 
-  imports: [TaskListComponent]
+  imports: [ RouterModule]
 })
 
 

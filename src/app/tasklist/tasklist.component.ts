@@ -4,13 +4,14 @@ import { TaskItemComponent } from '../task-item-component/task-item-component.co
 import { TaskService } from '../task.service';  
 import { FormGroup, FormsModule, FormControl, Validators } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './tasklist.component.html',
   styleUrls: ['./tasklist.component.css'],
   standalone: true,
-  imports: [TaskItemComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [TaskItemComponent, CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
 
 })
 export class TaskListComponent {

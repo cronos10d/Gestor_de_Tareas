@@ -1,0 +1,10 @@
+
+<div *ngIf="task">
+  <h2>Detalle de la Tarea</h2>
+  <p><strong>ID:</strong> {{ index }}</p>
+  <p><strong>Nombre:</strong> {{ task.task }}</p>
+  <p><strong>Estado:</strong> {{ task.completed ? 'Completada' : 'Pendiente' }}</p>
+
+  <a routerLink="/tareas">← Volver a la lista de tareas</a>
+</div>
+

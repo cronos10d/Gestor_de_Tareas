@@ -32,6 +32,7 @@
     </div>
 
     <ng-template #showTask>
+    <a [routerLink]="['/tareas', i]" style="text-decoration: none;"></a>
     <app-task-item 
       [task]="task.task" 
       [completed]="task.completed"
