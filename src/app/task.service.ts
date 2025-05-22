@@ -1,52 +1,58 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';  
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'  
-})
+@Injectable({ providedIn: 'root' })
 export class TaskService {
-  
-  private tasksSubject = new BehaviorSubject<any[]>([
-    { task: 'Revisar correos electrónicos importantes', completed: false },
-    { task: 'Planificar la semana', completed: false },
-    { task: 'Reunión del miércoles a las 10:00 am', completed: false },
-    { task: 'Revisar estado del proyecto', completed: false },
-    { task: 'Realizar un seguimiento de plazos', completed: false }
-  ]);
+  private apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
-  constructor() {}
+  private tasksSubject = new BehaviorSubject<any[]>([]);
+  tasks$: Observable<any[]> = this.tasksSubject.asObservable();
 
-  // Obtener las tareas
-  obtenerTarea() {
-    return this.tasksSubject.asObservable();
+  constructor(private http: HttpClient) {}
+
+  // 1. Cargar tareas desde API externa
+  cargarTareasDesdeApi(): void {
+    this.http.get<any[]>(this.apiUrl).pipe(
+      catchError(error => {
+        console.error('Error al cargar tareas desde API', error);
+        return throwError(() => error);
+      })
+    ).subscribe(tareas => {
+      const adaptadas = tareas.slice(0, 4).map(t => ({
+        task: t.title,
+        completed: t.completed
+      }));
+      this.tasksSubject.next(adaptadas);
+    });
   }
 
-  // Agregar una tarea 
-  añadirTarea(task: string) {
+  // 2. Agregar tarea
+  añadirTarea(task: string): void {
     const currentTasks = this.tasksSubject.value;
     const newTask = { task, completed: false };
     this.tasksSubject.next([...currentTasks, newTask]);
   }
 
-  // Eliminar una tarea
-  eliminarTarea(index: number) {
-    const currentTasks = this.tasksSubject.value;
+  // 3. Editar tarea
+  editarTarea(index: number, updatedTask: string): void {
+    const currentTasks = [...this.tasksSubject.value];
+    currentTasks[index].task = updatedTask;
+    this.tasksSubject.next(currentTasks);
+  }
+
+  // 4. Eliminar tarea
+  eliminarTarea(index: number): void {
+    const currentTasks = [...this.tasksSubject.value];
     currentTasks.splice(index, 1);
-    this.tasksSubject.next([...currentTasks]);
+    this.tasksSubject.next(currentTasks);
   }
 
-  // Cambiar el estado de completado de una tarea
-  toggleCompletion(index: number) {
-    const currentTasks = this.tasksSubject.value;
+  // 5. Toggle completado
+  toggleCompletion(index: number): void {
+    const currentTasks = [...this.tasksSubject.value];
     currentTasks[index].completed = !currentTasks[index].completed;
-    this.tasksSubject.next([...currentTasks]);
+    this.tasksSubject.next(currentTasks);
   }
-
-  
-  editarTarea(index: number, updatedTask: string) {
-    const currentTasks = this.tasksSubject.value;
-    currentTasks[index].task = updatedTask;  
-    this.tasksSubject.next([...currentTasks]);  
-  }
-
 }

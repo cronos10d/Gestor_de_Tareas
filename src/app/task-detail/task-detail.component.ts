@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TaskService } from '../task.service';
 
+
 @Component({
   selector: 'app-task-detail',
   imports: [CommonModule, RouterModule],
@@ -17,11 +18,14 @@ export class TaskDetailComponent {
   constructor(private route: ActivatedRoute, private taskService: TaskService) {}
 
   ngOnInit() {
-    this.index = Number(this.route.snapshot.paramMap.get('id'));
-    this.taskService.obtenerTarea().subscribe(tasks => {
-      this.task = tasks[this.index];
-    });
-  }
+  this.index = Number(this.route.snapshot.paramMap.get('id'));
+  this.taskService.cargarTareasDesdeApi();
+  this.taskService.tasks$.subscribe(tasks => {
+    this.task = tasks[this.index];
+  });
 }
+
+}
+
 
 

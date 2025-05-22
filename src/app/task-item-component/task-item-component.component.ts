@@ -10,8 +10,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   
 })
 export class TaskItemComponent {
-  @Input() task: string = '';   
-  @Input() completed: boolean = false;  
+
+
+  @Input() task!: string;
+  @Input() completed!: boolean;
   @Output() taskCompleted = new EventEmitter<void>();
 
   onTaskCompleted() {
