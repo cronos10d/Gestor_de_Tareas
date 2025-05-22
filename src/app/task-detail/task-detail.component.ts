@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TaskService } from '../task.service';
 
-
 @Component({
   selector: 'app-task-detail',
   imports: [CommonModule, RouterModule],
