@@ -9,7 +9,7 @@ export const routes: Routes = [
     { path: 'tareas', component: TaskListComponent },
     { path: 'tareas/:id', component: TaskDetailComponent },
     { path: 'imagenes', component: ImagenComponent},
-    {path: 'saludo', component: SaludoComponent}
+    { path: 'saludo', component: SaludoComponent}
 ];
 
 
