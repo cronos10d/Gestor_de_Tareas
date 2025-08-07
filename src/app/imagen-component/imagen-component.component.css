@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #c2a349b6;
+  }
+
+  /* Contenedor de galería */
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.9rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .galeria img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 1s ease, filter 1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .galeria img:hover {
+    transform: scale(1.1);
+
+  }
+
+  /* Media Queries avanzadas */
+  /* Pantallas pequeñas */
+  @media (max-width: 600px) {
+    .galeria {
+      grid-template-columns: 1fr; /* Una columna */
+    }
+  }
+
+  /* Pantallas medianas */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .galeria {
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    }
+  }
+
+  /* Modo oscuro */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #222;
+      color: #fff;
+    }
+    .galeria img {
+      border: 1px solid #444;
+    }
+  }
+
+  /* Reducir animaciones para accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .galeria img {
+      transition: none;
+    }
+    .galeria img:hover {
+      transform: none;
+    }
+  }
+
+  /* Container Query (experimental, probar en navegadores modernos) */
+  .galeria {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 300px) {
+    .galeria img {
+      height: 100px; /* Ajustar altura en contenedores pequeños */
+    }
+  }

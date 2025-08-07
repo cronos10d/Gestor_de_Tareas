@@ -1,0 +1,8 @@
+
+<h1>Mi Galería de Arte Contemporáneo</h1>
+<div class="galeria">
+  <div class="imagen" *ngFor="let img of imagenes">
+    <img [src]="img.src" [alt]="img.alt"  decoding="async" loading="lazy"/>
+    
+  </div>
+</div>
