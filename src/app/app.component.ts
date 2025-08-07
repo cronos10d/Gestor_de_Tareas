@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ImagenComponent } from './imagen-component/imagen-component.component';
 
 
 @Component({
@@ -7,12 +8,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true, 
-  imports: [ RouterModule]
+  imports: [ RouterModule, ImagenComponent]
 })
 
 
 export class AppComponent {
   title = 'gestor-tareas';
 }
+
 
 
