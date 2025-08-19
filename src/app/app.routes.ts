@@ -5,7 +5,7 @@ import { ImagenComponent } from './imagen-component/imagen-component.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'tareas', pathMatch: 'full' },
+    { path: '', redirectTo: 'imagenes', pathMatch: 'full' },
     { path: 'tareas', component: TaskListComponent },
     { path: 'tareas/:id', component: TaskDetailComponent },
     { path: 'imagenes', component: ImagenComponent},
