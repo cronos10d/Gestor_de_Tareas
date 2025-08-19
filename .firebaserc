@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "proyecto-f3eba"
-  }
+  },
+  "targets": {
+    "proyecto-f3eba": {
+      "hosting": {
+        "prod": [
+          "proyecto-f3eba"
+        ],
+        "dev": [
+          "f3eba-dev"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

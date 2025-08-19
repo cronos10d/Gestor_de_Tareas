@@ -1,0 +1,88 @@
+
+<header class="topbar">
+  <input class="search" type="search" placeholder="Otros eventos" aria-label="Buscar otros eventos">
+</header>
+
+<main class="container">
+
+  <section class="hero-photo">
+  <img src="assets/imagen/img11.jpg" alt="principal"
+       style="display:block;width:100%;height:72vh;object-fit:cover;border-radius:18px;margin:14px 0;">
+</section>
+
+ 
+  <section class="event-hero">
+    <p class="overline">Noviembre 2024</p>
+    <h1 class="event-title">El mayor evento de fotografía de Bolivia</h1>
+    <p class="lead">
+      Del sábado 30 al domingo 31 de agosto, Sopocachi Salón Avaroa celebrará el Festival de Fotografía Nacional,
+      un encuentro con fotógrafos y editores premiados. Habrá proyecciones, talleres, charlas y visitas guiadas
+      que te llevarán por un viaje visual a través de diversos estilos y temáticas.
+    </p>
+  </section>
+
+
+  <section class="teaser-wrap">
+    
+    <video class="teaser" autoplay muted loop playsinline width="1280" height="720">
+      <source src="assets/video/teaser.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  
+  <section class="event-meta">
+    <article class="meta-item">
+      <h3>¡Cuando?</h3>
+      <p>Sábado 30 → Do 31 de agosto · 10:00 - 21:30</p>
+    </article>
+    <article class="meta-item">
+      <h3>Dónde</h3>
+      <p>Sopocachi Salón Avaroa - Salas A5D</p>
+    </article>
+    <article class="meta-item">
+      <h3>Entradas</h3>
+      <p>Ingreso general Bs. 30 - Estudiantes Bs. 15</p>
+    </article>
+    <article class="meta-item">
+      <h3>Contacto</h3>
+      <p>festivalgmail.com  (+591) 700-00000</p>
+    </article>
+  </section>
+
+
+  <h2 class="gallery-title">Galeria de Fotos</h2>
+  <div class="galeria">
+    <div class="imagen" *ngFor="let img of imagenes">
+      <img [src]="img.src" [alt]="img.alt" decoding="async" loading="lazy"/>
+    </div>
+  </div>
+
+  
+  <section class="agenda">
+    <h2>Agenda</h2>
+    <ul class="agenda-list">
+      <li><span class="badge">Sab 30</span> Apertura & proyección documental (10:00)</li>
+      <li><span class="badge">Sab 30</span> Taller de edición con invitados (12:00)</li>
+      <li><span class="badge">Do 31</span> Conversatorio fotoperiodismo (18:30)</li>
+      <li><span class="badge">Do 31</span> Revisión de portafolios (10:00 a 13:00)</li>
+      <li><span class="badge">Do 31</span> Cierre y premiaciones (19:30)</li>
+    </ul>
+  </section>
+
+ 
+  <section class="map-wrap">
+    <iframe
+      class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.3071295734762!2d-68.1266723!3d-16.510585199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f2156d19fe167%3A0x8eba60f521ee8c39!2sPlaza%20Eduardo%20Abaroa!5e0!3m2!1ses-419!2sbo!4v1755572817504!5m2!1ses-419!2sbo"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa del evento">
+    </iframe>
+  </section>
+
+
+  <p class="ext">
+  Más detalles en <a href="https://google.com" target="_blank">el sitio aliado</a>.
+  </p>
+
+</main>
